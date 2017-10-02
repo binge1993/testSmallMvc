@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
 import com.binge.smallmvc.util.HttpUtil;
 
 /**
@@ -17,6 +18,9 @@ import com.binge.smallmvc.util.HttpUtil;
 
 public class CustomerServiceTest {
 
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(CustomerServiceTest.class);
+
 	private static final Logger logger = LoggerFactory
 			.getLogger(CustomerServiceTest.class);
 
@@ -26,14 +30,21 @@ public class CustomerServiceTest {
 	 * 创建客户
 	 */
 	@Test
-	public void testCreateCustomer() {
+	public void testCreateCustomer() { 
 		Map<String, String> params = new HashMap<>();
+		params.put("name", "binge");
+		params.put("contact", "123");
+		params.put("telephone", "111");
+		params.put("email", "292380632@qq.com");
+		params.put("remark", "aaa");
 
+		String result = "";
 		try {
-			HttpUtil.post(url + "customer_create",
-					HttpUtil.initParams(url + "customer_create", params));
+			String paramsStr = JSON.toJSONString(params);
+			result = HttpUtil.httpPost(url + "customer_create", paramsStr);
+			LOGGER.info("result:" + result);
 		} catch (Exception e) {
-			System.err.println("failure:" + e.getMessage());
+			LOGGER.error("failure", e);
 		}
 	}
 
