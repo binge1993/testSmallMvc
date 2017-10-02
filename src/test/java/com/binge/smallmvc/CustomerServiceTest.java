@@ -34,7 +34,7 @@ public class CustomerServiceTest {
 		Map<String, String> params = new HashMap<>();
 		params.put("name", "binge");
 		params.put("contact", "123");
-		params.put("telephone", "111");
+		params.put("telephone", "111"); 
 		params.put("email", "292380632@qq.com");
 		params.put("remark", "aaa");
 

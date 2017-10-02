@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.binge.smallmvc.annotation.Service;
+import com.binge.smallmvc.annotation.Transaction;
 import com.binge.smallmvc.helper.DruidDatabaseHelper;
 import com.binge.testsmallmvc.model.Customer;
 
@@ -32,8 +33,12 @@ public class CustomerService {
     /**
      * 创建客户
      */
+    @Transaction
     public boolean createCustomer(Map<String, Object> fieldMap) {
-        return DruidDatabaseHelper.insertEntity(Customer.class, fieldMap);
+    	DruidDatabaseHelper.insertEntity(Customer.class, fieldMap);
+    	
+        DruidDatabaseHelper.insertEntity(Customer.class, fieldMap);
+        throw new RuntimeException("aa");
     }
 
     /**
