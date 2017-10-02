@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.binge.smallmvc.annotation.Service;
+import com.binge.smallmvc.helper.DruidDatabaseHelper;
 import com.binge.testsmallmvc.model.Customer;
 
 /**
@@ -17,7 +18,7 @@ public class CustomerService {
      */
     public List<Customer> getCustomerList() {
         String sql = "SELECT * FROM customer";
-        return DatabaseHelper.queryEntityList(Customer.class, sql);
+        return DruidDatabaseHelper.queryEntityList(Customer.class, sql);
     }
 
     /**
@@ -25,28 +26,28 @@ public class CustomerService {
      */
     public Customer getCustomer(long id) {
         String sql = "SELECT * FROM customer WHERE id = ?";
-        return DatabaseHelper.queryEntity(Customer.class, sql, id);
+        return DruidDatabaseHelper.queryEntity(Customer.class, sql, id);
     }
 
     /**
      * 创建客户
      */
     public boolean createCustomer(Map<String, Object> fieldMap) {
-        return DatabaseHelper.insertEntity(Customer.class, fieldMap);
+        return DruidDatabaseHelper.insertEntity(Customer.class, fieldMap);
     }
 
     /**
      * 更新客户
      */
     public boolean updateCustomer(long id, Map<String, Object> fieldMap) {
-        return DatabaseHelper.updateEntity(Customer.class, id, fieldMap);
+        return DruidDatabaseHelper.updateEntity(Customer.class, id, fieldMap);
     }
 
     /**
      * 删除客户
      */
     public boolean deleteCustomer(long id) {
-        return DatabaseHelper.deleteEntity(Customer.class, id);
+		return DruidDatabaseHelper.deleteEntity(Customer.class, id);
     }
 
 }

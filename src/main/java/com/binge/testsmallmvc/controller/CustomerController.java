@@ -8,7 +8,6 @@ import com.binge.smallmvc.annotation.Controller;
 import com.binge.smallmvc.annotation.Inject;
 import com.binge.smallmvc.bean.Data;
 import com.binge.smallmvc.bean.Param;
-import com.binge.smallmvc.bean.View;
 import com.binge.testsmallmvc.model.Customer;
 import com.binge.testsmallmvc.service.CustomerService;
 
